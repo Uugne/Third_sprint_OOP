@@ -1,0 +1,24 @@
+{
+    "name": "ugnek/app3",
+    "description": "ORM, composter, doctrine",
+    "authors": [
+        {
+            "name": "Uugne",
+            "email": "ugne.kurkyte@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.9",
+        "symfony/cache": "^5.3",
+        "beberlei/doctrineextensions": "^1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Models\\": "src/models/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.3"
+    }
+    
+}
