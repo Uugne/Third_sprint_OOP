@@ -13,18 +13,17 @@ use Doctrine\ORM\Mapping as ORM;
 class Project {
     /** 
      * @ORM\Id
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @ORM\GeneratedValue
      */
     protected $id;
     
     /** 
-     * @ORM\Column(type="string", unique="true")
+     * @ORM\Column(type="string", unique="true", nullable=true)
      */
     protected $name;
 
     /**
-     * One adress has many users. This is the inverse side.
      * @ORM\OneToMany(targetEntity="Employees", mappedBy = "project")
      */
     private $employees;

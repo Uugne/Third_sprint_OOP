@@ -15,24 +15,9 @@
 
 include_once "bootstrap.php"; 
 
-// Helper functions
 function redirect_to_root(){
     header("Location: " . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
 }
-
-// Add new project - CREATE
-// if(isset($_GET['firstname']) != null && (isset($_GET['name'])) != null ){
-
-//     $employees = new Employees();
-//     $employees->setFirstname($_GET['firstname']);
-//     $project = new Project();
-//     $project->setName($_GET['name']);
-//     $entityManager->persist($employees);
-//     $entityManager->persist($project);
-//     $entityManager->flush();
-
-//     redirect_to_root();
-// }
 
 // Delete employee
 if(isset($_GET['delete'])){
@@ -53,12 +38,22 @@ if(isset($_POST['update_firstname'])){
     print '<h1>Personal management system (CRUD)</h1>';
 
     print("<button><a href='/app3/project'>Project</a></button>");
-    print("<button><a href='/app3/employees'>Employees</a></button>");
+    print("<button><a href='/app3/employees'>Employees</a></button><hr>");
+
+    print("<pre>Add new employee and a project: " . "</pre>");
+    
+    print '<form action="" method="GET">
+                <label for="firstnames">Employee name: </label><br>
+                <input type="text" name="firstnames" value=""><br>
+                <label for="names">Project name: </label><br>
+                <input type="text" name="names" value=""><br>
+                <input type="submit" value="Submit">
+          </form> 
+          <hr>';
 
     print("<table class='table'><thead>");
     print("<tr><th>Id</th><th>Name</th><th>Project</th><th>Action</th></tr>");
     print("</thead>");
-    // $products = $entityManager->getRepository('Models\Product')->findBy(array('name' => 'Batai'), ['id' => 'ASC']);
     $employees = $entityManager->getRepository('Models\Employees')->findAll();
 
         foreach($employees as $e)
@@ -87,17 +82,7 @@ if(isset($_GET['updatable'])){
         print("<hr>");
 }
 
-// print("<pre>Add new employee and a project: " . "</pre>");
-// ?>
-<!-- // <form action="" method="GET">
-//   <label for="name">Employee name: </label><br>
-//   <input type="text" name="firstname" value=""><br>
-//   <input type="submit" value="Submit">
-//   <label for="name">Project name: </label><br>
-//   <input type="text" name="name" value=""><br>
-//   <input type="submit" value="Submit">
-// </form> 
-// <hr> -->
+?>
 
 </body>
 </html>

@@ -15,21 +15,20 @@
 
 include_once "bootstrap.php";
 
-// Helper functions
 function redirect_to_root(){
     header("Location: " . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
 }
 
 // Add new project - CREATE
-// if(isset($_GET['name'])){
+if(isset($_GET['name'])){
 
-//     $project = new Project();
-//     $project->setName($_GET['name']);
-//     $entityManager->persist($project);
-//     $entityManager->flush();
+    $project = new Project();
+    $project->setName($_GET['name']);
+    $entityManager->persist($project);
+    $entityManager->flush();
 
-//     redirect_to_root();
-// }
+    redirect_to_root();
+}
 
 // Delete project
 if(isset($_GET['delete'])){
@@ -55,13 +54,11 @@ if(isset($_POST['update_name'])){
     print("<table class='table'><thead>");
     print("<tr><th>Id</th><th>Project Name</th><th>Employees</th><th>Action</th></tr>");
     print("</thead>");
-    // $products = $entityManager->getRepository('Models\Product')->findBy(array('name' => 'Batai'), ['id' => 'ASC']);
     $project = $entityManager->getRepository('Models\Project')->findAll();
 
 
         foreach ($project as $p)
         foreach ($p->getEmployees() as $employee)
-        
          
             print_r("<tr>" 
                     . "<td>" . $p->getId()  . "</td>" 
@@ -71,7 +68,9 @@ if(isset($_POST['update_name'])){
                     . "<td><a href=\"?updatable={$p->getId()}\">UPDATE</a></td>"
                 . "</tr>");
              
-            print("</pre><hr>");    
+            print("</pre><hr>");
+        
+        
 
 
 if(isset($_GET['updatable'])){
@@ -86,10 +85,16 @@ if(isset($_GET['updatable'])){
             </form>
             ");
         print("<hr>");
-}
+};
 
+print("<pre>Add new project: " . "</pre>");
 ?>
-
+ <form action="" method="GET">
+   <label for="name">Project name: </label><br>
+   <input type="text" name="name" value=""><br>
+   <input type="submit" value="Submit">
+ </form> 
+ <hr>
 </body>
 </html>
 

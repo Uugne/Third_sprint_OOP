@@ -64,7 +64,7 @@ final class Versions
   'symfony/string' => 'v5.3.3@bd53358e3eccec6a670b5f33ab680d8dbe1d4ae1',
   'symfony/var-exporter' => 'v5.3.3@903c2c0babd6267de5bcb2995e8fc1efb5f01f1f',
   'symfony/var-dumper' => 'v5.3.3@46aa709affb9ad3355bd7a810f9662d71025c384',
-  'ugnek/app3' => '1.0.0+no-version-set@',
+  'ugnek/app3' => 'dev-master@035b04190b22d117c3c8195106c0a24e8db5c39b',
 );
 
     private function __construct()

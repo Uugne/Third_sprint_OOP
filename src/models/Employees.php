@@ -13,19 +13,19 @@ class Employees
 {
     /** 
      * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
      /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", nullable=true) 
      */
     protected $firstname;
 
     /**
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="employees")
-     * @ORM\JoinColumn(name="project_id", referencedColumnName="id", onDelete="RESTRICT")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id", onDelete="RESTRICT", nullable=true)
      */
     private $project;
 
@@ -44,6 +44,10 @@ class Employees
 
     public function getProject() {
         return $this->project;
+    }
+
+    public function setProject($project) {
+        $this->project = $project;
     }
 
 }

@@ -28,12 +28,12 @@ switch ($request) {
     case $prefix . '/employees' . '?updatable='.$_GET['updatable']: 
         require __DIR__ . '/src/views/employees.php';
         break;
-    // case $prefix . '/project' . '?name='.$_GET['name']: 
-    //     require __DIR__ . '/src/views/project.php';
-    //     break;
-    // case $prefix . '/employees' . '?firstname=Jonas&name=JAVAA'; 
-    //     require __DIR__ . '/src/views/employees.php';
-    //     break;         
+    case $prefix . '/project' . '?name='.$_GET['name']: 
+        require __DIR__ . '/src/views/project.php';
+        break;
+    case $prefix . '/employees' . '?firstname='.$_GET['firstnames'].'&name='.$_GET['names']; 
+        require __DIR__ . '/src/views/employees.php';
+        break;         
     default:
         http_response_code(404);
         require __DIR__ . '/src/views/404.php';
