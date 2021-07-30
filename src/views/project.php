@@ -57,18 +57,22 @@ if(isset($_POST['update_name'])){
     $project = $entityManager->getRepository('Models\Project')->findAll();
 
 
-        foreach ($project as $p)
-        foreach ($p->getEmployees() as $employee)
-         
-            print_r("<tr>" 
-                    . "<td>" . $p->getId()  . "</td>" 
-                    . "<td>" . $p->getName() . "</td>" 
-                    . "<td>" . $employee->getFirstname() . "</td>"  
-                    . "<td style='width:20px'><a href=\"?delete={$p->getId()}\">DELETE</a></td>" 
-                    . "<td><a href=\"?updatable={$p->getId()}\">UPDATE</a></td>"
-                . "</tr>");
-             
-            print("</pre><hr>");
+        foreach ($project as $p){
+        $employee_firstnames = ''; 
+            foreach ($p->getEmployees() as $employee) {
+            
+            $employee_firstnames .= $employee->getFirstName() . ', ';}
+            
+                print_r("<tr>" 
+                        . "<td>" . $p->getId()  . "</td>" 
+                        . "<td>" . $p->getName() . "</td>" 
+                        . "<td>" . $employee_firstnames . "</td>"  
+                        . "<td style='width:20px'><a href=\"?delete={$p->getId()}\">DELETE</a></td>" 
+                        . "<td><a href=\"?updatable={$p->getId()}\">UPDATE</a></td>"
+                    . "</tr>");
+                
+                print("</pre><hr>");
+        }
         
         
 
